@@ -11,10 +11,14 @@ export default function Carousel() {
   let ref = React.useRef(null);
 
   React.useEffect(() => {
-    setInterval(() => {
-      setIndex((idx) => idx + 1)
+    let int = setInterval(() => {
+      console.log('hiiiii')
+      setIndex(idx => idx + 1);
     }, 5000);
-  }, []);
+
+    return () => int
+
+  }, []); //eslint-disable-line
 
   React.useEffect(() => {
     window.requestAnimationFrame(rotateCarousel);
@@ -28,6 +32,7 @@ export default function Carousel() {
     setIndex(index - 1);
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function rotateCarousel() {
     let carousel;
 
